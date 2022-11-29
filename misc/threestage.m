@@ -76,8 +76,8 @@ c = colorbar;
 c.Label.String = 'GLOW (kg)';
 
 [GLOW_min1,indexmin] = min(tot_mass1(tot_mass1>0));
-frac1 = X1(indexmin);
+frac3 = X1(indexmin);
 frac2 = Y1(indexmin);
-frac3 = 1 - (frac1 + frac2);
+frac1 = 1 - (frac3 + frac2);
 
 

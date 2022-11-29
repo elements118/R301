@@ -12,12 +12,12 @@ clc;
 clear all; 
 
 % inputs/known variables 
-dv_total = 15 * 10^3; % [m/s] total delta-v required 
-payload_mass = 100; % [kg] payload mass
+dv_total = 11 * 10^3; % [m/s] total delta-v required 
+payload_mass = 10000; % [kg] payload mass
 empty_frac = .115; % [N/A] empty mass fraction 
-Isp1  = 362; % [s] Stage 1 specific impulse 
-Isp2 = 465; % [s] Stage 2 specific impulse
-Isp3 = 350; % [s] Stage 3 specific impulse
+Isp1  = 289.1; % [s] Stage 1 specific impulse 
+Isp2 = 315.4; % [s] Stage 2 specific impulse
+Isp3 = 325.1; % [s] Stage 3 specific impulse
 g0 = 9.81; % [m/s^2] gravitational acceleration
 
 % characteristic exhaust velocity calculation 
@@ -76,4 +76,10 @@ zlabel("GLOW (kg)")
 title("GLOW/3 Stage Total Mass vs. 3rd Stage \DeltaV Fraction and 2nd Stage \DeltaV Fraction")
 grid
 legend("GLOW (kg)", "Minimum GLOW")
+
+[GLOW_min1,indexmin] = min(tot_mass1(tot_mass1>0));
+frac1 = X1(indexmin);
+frac2 = Y1(indexmin);
+frac3 = 1 - (frac1 + frac2);
+
 

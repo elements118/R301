@@ -1,3 +1,4 @@
+% Author: Jacob Bell (bell339@purdue.edu)
 function [mach_num, density, temperature, pressure] = atmosphere(altitude,units,increment)
 % This function takes inputs for altitude and desired unit system, as well as altitude increment, and
 % returns atmospheric conditions (pressure, density, temperature, pressure,

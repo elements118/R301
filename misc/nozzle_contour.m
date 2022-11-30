@@ -1,6 +1,7 @@
 % This script sizes and outputs a nozzle contour for a rocket thrust
 % chamber given expansion ratio and throat area/radius, based on a Rao
-% nozzle contour. The sizing guide used is available at
+% nozzle contour.
+% Author: Jacob Bell (bell339@purdue.edu)
 clc; 
 clear all; 
 

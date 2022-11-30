@@ -18,7 +18,9 @@ clear all;
 % inputs/known variables 
 dv_total = 11.4 * 10^3; % [m/s] total delta-v required 
 payload_mass = 10000; % [kg] payload mass
-empty_frac = .115; % [N/A] empty mass fraction 
+empty_frac1 = .115; % [N/A] empty mass fraction stage 1
+empty_frac2 = .115; % [N/A] empty mass fraction stage 2
+empty_frac3 = .115; % [N/A] empty mass fraction stage 3
 Isp1  = 289.1; % [s] Stage 1 specific impulse 
 Isp2 = 315.4; % [s] Stage 2 specific impulse
 Isp3 = 325.1; % [s] Stage 3 specific impulse
@@ -39,21 +41,21 @@ Y = Y .* howdy;
 Z = Z .* howdy;
 
 % 3rd stage calcs
-prop_mass3 = (payload_mass .* (exp(dv_total .* X./c3) - 1) .* (1 - empty_frac) ./ ...
-(1 - empty_frac .* exp(dv_total .* X./c3)));
-inert_mass3 = -1 .* prop_mass3 .* empty_frac ./ (empty_frac - 1);
+prop_mass3 = (payload_mass .* (exp(dv_total .* X./c3) - 1) .* (1 - empty_frac3) ./ ...
+(1 - empty_frac3 .* exp(dv_total .* X./c3)));
+inert_mass3 = -1 .* prop_mass3 .* empty_frac3 ./ (empty_frac3 - 1);
 tot_mass3 = (prop_mass3 + inert_mass3 + payload_mass) .* howdy;
 
  % 2nd stage calcs
-prop_mass2 = (tot_mass3 .* (exp(dv_total .* Y/c2) - 1) .* (1 - empty_frac) ./ ...
-(1 - empty_frac .* exp(dv_total .* Y./c2)));
-inert_mass2 = -1 .* prop_mass2 .* empty_frac ./ (empty_frac - 1);
+prop_mass2 = (tot_mass3 .* (exp(dv_total .* Y/c2) - 1) .* (1 - empty_frac2) ./ ...
+(1 - empty_frac2 .* exp(dv_total .* Y./c2)));
+inert_mass2 = -1 .* prop_mass2 .* empty_frac2 ./ (empty_frac2 - 1);
 tot_mass2 = (prop_mass2 + inert_mass2 + tot_mass3) .* howdy;
 
 % 1st stage calcs
-prop_mass1 = (tot_mass2 .* (exp(dv_total .* Z/c1) - 1) .* (1 - empty_frac) ./ ...
-(1 - empty_frac .* exp(dv_total .* Z/c1)));
-inert_mass1 = -1 .* prop_mass1 .* empty_frac ./ (empty_frac - 1);
+prop_mass1 = (tot_mass2 .* (exp(dv_total .* Z/c1) - 1) .* (1 - empty_frac3) ./ ...
+(1 - empty_frac3 .* exp(dv_total .* Z/c1)));
+inert_mass1 = -1 .* prop_mass1 .* empty_frac3 ./ (empty_frac3 - 1);
 tot_mass1 = (prop_mass1 + inert_mass1 + tot_mass2) .* howdy;
 
 % Reformating total mass values to plot better, removing low and high vals

@@ -18,8 +18,8 @@ clear all;
 % inputs/known variables 
 dv_total = 11.4 * 10^3; % [m/s] total delta-v required 
 payload_mass = 10000; % [kg] payload mass
-empty_frac1 = .115; % [N/A] empty mass fraction stage 1
-empty_frac2 = .115; % [N/A] empty mass fraction stage 2
+empty_frac1 = .06; % [N/A] empty mass fraction stage 1
+empty_frac2 = .09; % [N/A] empty mass fraction stage 2
 empty_frac3 = .115; % [N/A] empty mass fraction stage 3
 Isp1  = 289.1; % [s] Stage 1 specific impulse 
 Isp2 = 315.4; % [s] Stage 2 specific impulse

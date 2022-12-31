@@ -19,14 +19,14 @@ clear all;
 g0 = 9.81; % [m/s^2] gravitational acceleration
 
 % inputs/known variables 
-dv_total = 11.4 * 10^3; % [m/s] total delta-v required 
-payload_mass = 10000; % [kg] payload mass
+dv_total = 16 * 10^3; % [m/s] total delta-v required 
+payload_mass = 7500; % [kg] payload mass
 empty_frac1 = .06; % [N/A] empty mass fraction stage 1
 empty_frac2 = .09; % [N/A] empty mass fraction stage 2
 empty_frac3 = .115; % [N/A] empty mass fraction stage 3
-Isp1  = 289.1; % [s] Stage 1 specific impulse 
-Isp2 = 315.4; % [s] Stage 2 specific impulse
-Isp3 = 325.1; % [s] Stage 3 specific impulse
+Isp1  = 450.8; % [s] Stage 1 specific impulse SRB isp 
+Isp2 = 467; % [s] Stage 2 specific impulse RS-25 Engines ISP https://www.nasa.gov/pdf/703294main_IndustryDay_compliant-FINAL.pdf
+Isp3 = 900; % [s] Stage 3 specific impulse from single RL-10 engine used on SLS https://www.enginehistory.org/Rockets/RPE08.21/RPE08.21.shtml
 
 % characteristic exhaust velocity calculation from Isp
 c1 = Isp1 * g0;
@@ -34,7 +34,7 @@ c2 = Isp2 * g0;
 c3 = Isp3 * g0;
 
 % creating an array of decimal values for delta v fractions
-alpha = .2:.01:.6; % reasonable range; can vary if desired 
+alpha = .1:.005:.7; % reasonable range; can vary if desired 
 [X,Y,Z] = meshgrid(alpha,alpha,alpha); % for indexing possible split combinations
 [X1,Y1] = meshgrid(alpha,alpha); % for mesh plot creation later 
 howdy = (X + Y + Z) == 1; % "howdy" is a 3D logical matrix 
